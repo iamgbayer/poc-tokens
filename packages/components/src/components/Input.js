@@ -114,8 +114,7 @@ const Content = styled.div`
   width: 45px;
   height: 45px;
   background-color: ${theme('colors.support.secondary')};
-  box-shadow: ${theme('shadow.secondary')};
-  border-radius: ${theme('border.radius.nine')};
+  border-radius: ${theme('border.radius.five')};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -5,6 +5,7 @@ export const Tokens = {
     secondary: '#3d56f0',
     tertiary: '#efefef',
     quartiary: '#fff',
+    quintiary: '#333',
     support: {
       primary: '#f6f6f6',
       secondary: '#e9e9e9',
@@ -24,7 +25,8 @@ export const Tokens = {
       fifty: '50px',
       fifteen: '15px',
       nine: '9px',
-      five: '5px'
+      five: '5px',
+      two: '2px'
     }
   },
   font: {

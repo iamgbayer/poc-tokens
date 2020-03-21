@@ -42,7 +42,6 @@ storiesOf(`${GROUPS.COMPONENTS}|Input`, module)
       )}
     </Fillable>
   ))
-
   .add('Size', () => (
     <Inputs>
       <Input placeholder="Default" />

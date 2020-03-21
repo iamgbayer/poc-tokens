@@ -9,7 +9,8 @@ node_modules
 /coverage
 
 # production
-/build
+storybook-static
+build
 
 # misc
 .DS_Store
