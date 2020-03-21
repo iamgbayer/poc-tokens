@@ -6,7 +6,11 @@
   "dependencies": {},
   "scripts": {
     "start": "lerna run start",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "start:components": "yarn workspace @feedl/components start",
+    "start:site": "yarn workspace @feedl/site start",
+    "build:site": "yarn workspace @feedl/site build",
+    "build:components": "yarn workspace @feedl/components build"
   },
   "workspaces": [
     "packages/*"
