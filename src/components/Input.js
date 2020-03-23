@@ -116,6 +116,7 @@ const Content = styled.div`
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  transition: all 0.4s ease-in-out;
 
   ${switchProp('iconAlign', {
     left: css`
@@ -125,6 +126,10 @@ const Content = styled.div`
       right: 10px;
     `
   })};
+
+  &:hover {
+    background-color: ${theme('colors.support.tertiary')};
+  }
 `
 
 export function Input({

@@ -1,5 +1,5 @@
 import React, { memo, useContext, useState } from 'react'
-import { Container, Row, Col, Hidden } from 'react-grid-system'
+import { Container, Col, Hidden } from 'react-grid-system'
 import styled, { ThemeContext, css } from 'styled-components'
 import { theme, ifProp } from 'styled-tools'
 
