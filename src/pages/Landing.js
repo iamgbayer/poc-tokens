@@ -1,38 +1,41 @@
 import React, { memo, useContext, useState } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid'
+import { Container, Row, Col, Hidden } from 'react-grid-system'
 import styled, { ThemeContext, css } from 'styled-components'
 import { theme, ifProp } from 'styled-tools'
-import media from 'styled-media-query'
 
 import peoples from '../assets/images/peoples.svg'
 
 import { Text, Input, Icon } from '../components'
-
-const Nav = styled.nav`
-  width: 100%;
-  background-color: blue;
-`
-
-const Logo = styled.div`
-  width: 100%;
-  background-color: red;
-`
+import { breakpoints } from '../helpers'
 
 const Description = styled(Text)`
   max-width: 500px;
+
+  ${breakpoints.lessThan('sm')`
+    text-align: center;
+  `}
 `
 
-const Email = styled(Row)`
+const Email = styled.div`
   width: 100%;
   max-width: 300px;
+
+  ${breakpoints.lessThan('sm')`
+    margin: auto;
+    max-width: 400px;
+  `}
 `
 
 const Title = styled(Text)`
   max-width: 630px;
   font-size: ${theme('font.size.fortyFive')};
 
-  ${media.greaterThan('small')`
+  ${breakpoints.greaterThan('sm')`
     font-size: ${theme('font.size.sixty')};
+  `}
+
+  ${breakpoints.lessThan('sm')`
+    text-align: center;
   `}
 `
 
@@ -40,11 +43,22 @@ const Header = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
+
+  ${breakpoints.lessThan('sm')`
+    display: flex;
+    align-items: center;
+    height: 70vh;
+  `}
 `
 
 Header.Content = styled(Col)`
   height: 100%;
   padding-top: 10%;
+
+  ${breakpoints.lessThan('sm')`
+    padding-top: 0;
+    text-align: center;
+  `}
 `
 
 const Peoples = styled.img`
@@ -54,7 +68,7 @@ const Peoples = styled.img`
   width: 75%;
   z-index: ${theme('zindex.behind')};
 
-  ${media.lessThan('large')`
+  ${breakpoints.lessThan('x1')`
     width: 85%;
   `}
 `
@@ -64,9 +78,9 @@ const Subtitle = styled(Text)`
   text-align: center;
   padding-top: 60px;
 
-  ${media.greaterThan('small')`
-  font-size: ${theme('font.size.sixty')};
-`}
+  ${breakpoints.greaterThan('sm')`
+    font-size: ${theme('font.size.sixty')};
+  `}
 `
 
 const About = styled.div`
@@ -76,8 +90,7 @@ const About = styled.div`
 `
 
 const Point = styled.div`
-  width: 100%;
-  min-width: 300px;
+  width: 300px;
   height: 300px;
   padding: 45px;
   border-radius: ${theme('border.radius.five')};
@@ -94,10 +107,34 @@ const Point = styled.div`
       border: 1px solid ${theme('colors.support.secondary')};
     `
   )}
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  ${breakpoints.lessThan('lg')`
+    width: 100%;
+    height: 120px;
+    margin-bottom: 30px;
+    padding: 15px;
+
+    .title {
+      margin-bottom: 10px;
+    }
+  `}
+
+  ${breakpoints.lessThan('sm')`
+    height: 150px;
+  `}
 `
 
-About.Content = styled(Grid)`
-  max-width: 1050px;
+About.Content = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+
+  ${breakpoints.lessThan('lg')`
+    flex-direction: column;
+  `}
 `
 
 const Explanation = styled(Text)`
@@ -111,7 +148,7 @@ export const Landing = memo(() => {
   return (
     <>
       <Header>
-        <Grid>
+        <Container>
           <Header.Content>
             <Title color={colors.seventiary} weight="bold">
               Traga seus usuários para o cíclo de decisão.
@@ -148,9 +185,11 @@ export const Landing = memo(() => {
               />
             </Email>
           </Header.Content>
-        </Grid>
+        </Container>
 
-        <Peoples src={peoples} />
+        <Hidden xs>
+          <Peoples src={peoples} />
+        </Hidden>
       </Header>
 
       <About>
@@ -170,54 +209,46 @@ export const Landing = memo(() => {
         </Explanation>
 
         <About.Content>
-          <Row between="xs">
-            <Col xs={3}>
-              <Point variant="primary">
-                <Text
-                  bottom={35}
-                  color={colors.support.quintiary}
-                  weight="bold"
-                >
-                  Grow your business
-                </Text>
+          <Point variant="primary">
+            <Text
+              className="title"
+              color={colors.support.quintiary}
+              weight="bold"
+            >
+              Grow your business
+            </Text>
 
-                <Text weight="light" color={colors.support.quintiary}>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam.
-                </Text>
-              </Point>
-            </Col>
+            <Text weight="light" color={colors.support.quintiary}>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam.
+            </Text>
+          </Point>
 
-            <Col xs={3}>
-              <Point variant="secondary">
-                <Text bottom={35} weight="bold" color={colors.quartiary}>
-                  Grow your business
-                </Text>
+          <Point variant="secondary">
+            <Text className="title" weight="bold" color={colors.quartiary}>
+              Grow your business
+            </Text>
 
-                <Text weight="light" color={colors.quartiary}>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam.
-                </Text>
-              </Point>
-            </Col>
+            <Text weight="light" color={colors.quartiary}>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam.
+            </Text>
+          </Point>
 
-            <Col xs={3}>
-              <Point variant="primary">
-                <Text
-                  bottom={35}
-                  color={colors.support.quintiary}
-                  weight="bold"
-                >
-                  Grow your business
-                </Text>
+          <Point variant="primary">
+            <Text
+              className="title"
+              color={colors.support.quintiary}
+              weight="bold"
+            >
+              Grow your business
+            </Text>
 
-                <Text weight="light" color={colors.support.quintiary}>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam.
-                </Text>
-              </Point>
-            </Col>
-          </Row>
+            <Text weight="light" color={colors.support.quintiary}>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam.
+            </Text>
+          </Point>
         </About.Content>
       </About>
     </>

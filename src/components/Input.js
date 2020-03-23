@@ -74,16 +74,6 @@ const Inputable = styled.input`
     null
   )}
 
-  &:focus {
-    outline: none;
-    border: 1px solid
-      ${ifProp(
-        'hasError',
-        theme('colors.support.sixtiary'),
-        theme('colors.support.quintiary')
-      )};
-  }
-
   &::placeholder {
     font-weight: ${theme('font.weight.regular')};
     color: ${ifProp(
