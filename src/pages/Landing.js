@@ -78,7 +78,6 @@ const Peoples = styled.img`
 const Subtitle = styled(Text)`
   font-size: ${theme('font.size.fortyFive')};
   text-align: center;
-  padding-top: 60px;
 
   ${breakpoints.greaterThan('sm')`
     font-size: ${theme('font.size.sixty')};
@@ -87,7 +86,8 @@ const Subtitle = styled(Text)`
 
 const About = styled(motion.div)`
   width: 100%;
-  height: 80vh;
+  height: auto;
+  padding: 80px 0;
   background-color: ${theme('colors.quartiary')};
 `
 
