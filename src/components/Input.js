@@ -24,14 +24,18 @@ const Container = styled(Box)`
 `
 
 const Inputable = styled.input`
-  height: ${switchProp('size', {
-    default: '40px',
-    large: '48px'
-  })};
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   font-weight: ${theme('font.weight.regular')};
   font-family: ${theme('font.family.primary')};
   font-size: ${theme('font.size.fifteen')};
   cursor: ${ifProp('disabled', 'not-allowed', 'initial')};
+
+  height: ${switchProp('size', {
+    default: '40px',
+    large: '48px'
+  })};
 
   color: ${ifProp(
     'hasError',
