@@ -1,12 +1,12 @@
 import React, { memo, useContext, useState } from 'react'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import styled, { ThemeContext } from 'styled-components'
-import { theme } from 'styled-tools'
+import styled, { ThemeContext, css } from 'styled-components'
+import { theme, ifProp } from 'styled-tools'
 import media from 'styled-media-query'
 
 import peoples from '../assets/images/peoples.svg'
 
-import { Text, Input, Icon, Button } from '../components'
+import { Text, Input, Icon } from '../components'
 
 const Nav = styled.nav`
   width: 100%;
@@ -59,6 +59,51 @@ const Peoples = styled.img`
   `}
 `
 
+const Subtitle = styled(Text)`
+  font-size: ${theme('font.size.fortyFive')};
+  text-align: center;
+  padding-top: 60px;
+
+  ${media.greaterThan('small')`
+  font-size: ${theme('font.size.sixty')};
+`}
+`
+
+const About = styled.div`
+  width: 100%;
+  height: 80vh;
+  background-color: ${theme('colors.quartiary')};
+`
+
+const Point = styled.div`
+  width: 100%;
+  min-width: 300px;
+  height: 300px;
+  padding: 45px;
+  border-radius: ${theme('border.radius.five')};
+
+  background-color: ${ifProp(
+    { variant: 'primary' },
+    theme('colors.sixtiary'),
+    theme('colors.secondary')
+  )};
+
+  ${ifProp(
+    { variant: 'primary' },
+    css`
+      border: 1px solid ${theme('colors.support.secondary')};
+    `
+  )}
+`
+
+About.Content = styled(Grid)`
+  max-width: 1050px;
+`
+
+const Explanation = styled(Text)`
+  text-align: center;
+`
+
 export const Landing = memo(() => {
   const { colors } = useContext(ThemeContext)
   const [email, setEmail] = useState('')
@@ -107,6 +152,74 @@ export const Landing = memo(() => {
 
         <Peoples src={peoples} />
       </Header>
+
+      <About>
+        <Subtitle color={colors.seventiary} weight="bold" bottom={20}>
+          Como funciona?
+        </Subtitle>
+
+        <Explanation
+          color={colors.support.quintiary}
+          size="eighteen"
+          weight="light"
+          height={22}
+          bottom={80}
+        >
+          Some explanation here as it work, unde omnis iste natus error sit
+          voluptatem.
+        </Explanation>
+
+        <About.Content>
+          <Row between="xs">
+            <Col xs={3}>
+              <Point variant="primary">
+                <Text
+                  bottom={35}
+                  color={colors.support.quintiary}
+                  weight="bold"
+                >
+                  Grow your business
+                </Text>
+
+                <Text weight="light" color={colors.support.quintiary}>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam.
+                </Text>
+              </Point>
+            </Col>
+
+            <Col xs={3}>
+              <Point variant="secondary">
+                <Text bottom={35} weight="bold" color={colors.quartiary}>
+                  Grow your business
+                </Text>
+
+                <Text weight="light" color={colors.quartiary}>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam.
+                </Text>
+              </Point>
+            </Col>
+
+            <Col xs={3}>
+              <Point variant="primary">
+                <Text
+                  bottom={35}
+                  color={colors.support.quintiary}
+                  weight="bold"
+                >
+                  Grow your business
+                </Text>
+
+                <Text weight="light" color={colors.support.quintiary}>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam.
+                </Text>
+              </Point>
+            </Col>
+          </Row>
+        </About.Content>
+      </About>
     </>
   )
 })

@@ -50,7 +50,8 @@ export const Tokens = {
     weight: {
       bold: 800,
       medium: 600,
-      regular: 400
+      regular: 400,
+      light: 300
     }
   }
 }
