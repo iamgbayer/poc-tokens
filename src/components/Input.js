@@ -113,8 +113,7 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 6px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
 

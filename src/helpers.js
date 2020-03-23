@@ -6,3 +6,9 @@ export const breakpoints = generateMedia({
   lg: '992px',
   x1: '1200px'
 })
+
+export const enterWithY = y => ({
+  initial: { opacity: 0 },
+  enter: { opacity: 1, y },
+  exit: { opacity: 0 }
+})
