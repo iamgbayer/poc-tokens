@@ -15,7 +15,8 @@ export const Tokens = {
       // tertiary: '#4cb2a8',
       quartiary: '#607b9e',
       quintiary: '#aaa',
-      sixtiary: '#ff0130'
+      sixtiary: '#ff0130',
+      seventiary: 'rgba(250, 250, 250, 0.7)'
     }
   },
   zindex: {

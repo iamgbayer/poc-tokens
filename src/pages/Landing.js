@@ -5,7 +5,7 @@ import { theme, ifProp } from 'styled-tools'
 
 import peoples from '../assets/images/peoples.svg'
 
-import { Text, Input, Icon } from '../components'
+import { Text, Input, Icon, Modal } from '../components'
 import { breakpoints } from '../helpers'
 
 const Description = styled(Text)`
@@ -91,7 +91,7 @@ const About = styled.div`
 
 const Point = styled.div`
   width: 300px;
-  height: 300px;
+  height: 260px;
   padding: 45px;
   border-radius: ${theme('border.radius.five')};
 
@@ -144,9 +144,22 @@ const Explanation = styled(Text)`
 export const Landing = memo(() => {
   const { colors } = useContext(ThemeContext)
   const [email, setEmail] = useState('')
+  const [modal, setModal] = useState(false)
 
   return (
     <>
+      <Modal isOpen={modal} close={() => setModal(false)}>
+        <Description
+          color={colors.support.quintiary}
+          size="eighteen"
+          weight="light"
+          height={22}
+          bottom={40}
+        >
+          Tudo certo!
+        </Description>
+      </Modal>
+
       <Header>
         <Container>
           <Header.Content>
@@ -174,6 +187,7 @@ export const Landing = memo(() => {
                 placeholder="Seu email aqui"
                 onChange={({ target }) => setEmail(target.value)}
                 value={email}
+                onClickIcon={() => setModal(true)}
                 icon={({ width, height, color }) => (
                   <Icon
                     name="right"
@@ -215,23 +229,23 @@ export const Landing = memo(() => {
               color={colors.support.quintiary}
               weight="bold"
             >
-              Grow your business
+              Colete feedbacks
             </Text>
 
             <Text weight="light" color={colors.support.quintiary}>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
+              Tenha uma visão clara de novas funcionalidades e correções que
+              estão sendo mais sugeridas por seus usuário em um único lugar.
             </Text>
           </Point>
 
           <Point variant="secondary">
             <Text className="title" weight="bold" color={colors.quartiary}>
-              Grow your business
+              Defina um roadmap
             </Text>
 
             <Text weight="light" color={colors.quartiary}>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
+              Deixe bem explícito para todos no que atualmente seu time está
+              trabalhando e quais serão os próximos afazeres.
             </Text>
           </Point>
 
@@ -241,12 +255,12 @@ export const Landing = memo(() => {
               color={colors.support.quintiary}
               weight="bold"
             >
-              Grow your business
+              Exponha um changelog
             </Text>
 
             <Text weight="light" color={colors.support.quintiary}>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
+              Anuncie os últimos lançamentos do seu produto, engajando seus
+              usuários mais cedo com novas funcionalidades e correções.
             </Text>
           </Point>
         </About.Content>

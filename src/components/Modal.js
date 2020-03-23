@@ -10,17 +10,18 @@ const Overlay = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background-color: ${theme('colors.support.quartiary')};
-  position: absolute;
+  background-color: ${theme('colors.support.seventiary')};
+  position: fixed;
   z-index: ${theme('zindex.overlay')};
+  overflow: hidden;
 `
 
 const Content = styled.div`
   width: 100%;
-  max-width: 700px;
-  background-color: ${theme('colors.support.primary')};
-  border-radius: ${theme('border.radius.fifteen')};
-  box-shadow: ${theme('shadow.primary')};
+  max-width: 550px;
+  background-color: ${theme('colors.quartiary')};
+  border-radius: ${theme('border.radius.five')};
+  border: 1px solid ${theme('colors.support.secondary')};
   padding: 35px 25px;
   position: absolute;
   left: 50%;
