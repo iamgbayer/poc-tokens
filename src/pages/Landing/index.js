@@ -162,7 +162,7 @@ export const Landing = memo(() => {
                 <Input
                   iconAlign="right"
                   full={true}
-                  label="Seu email aqui"
+                  label="Seu email para obter o acesso antecipado"
                   placeholder="john@doe.com"
                   onChange={({ target }) => setEmail(target.value)}
                   value={email}
@@ -198,7 +198,7 @@ export const Landing = memo(() => {
             <Input
               full={true}
               id="email"
-              label="Seu email aqui"
+              label="Seu email para obter o acesso antecipado"
               placeholder="john@doe.com"
               onChange={({ target }) => setEmail(target.value)}
               value={email}
