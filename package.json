@@ -1,21 +1,71 @@
 {
   "name": "feedl",
   "version": "1.0.0",
-  "license": "MIT",
   "private": true,
-  "dependencies": {},
-  "scripts": {
-    "start": "lerna run start",
-    "bootstrap": "lerna bootstrap",
-    "start:components": "yarn workspace @feedl/components start",
-    "start:site": "yarn workspace @feedl/site start",
-    "build:site": "yarn workspace @feedl/site build",
-    "build:components": "yarn workspace @feedl/components build"
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "framer-motion": "^1.10.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-flexbox-grid": "^2.1.2",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.0.1",
+    "styled-media-query": "^2.1.2",
+    "styled-tools": "^1.7.1",
+    "react-scripts": "^3.4.1"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
-    "lerna": "^3.10.5"
+    "css-loader": "^3.4.2",
+    "style-loader": "^1.1.3",
+    "url-loader": "^4.0.0",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-proposal-function-sent": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-styled-components": "^1.10.0",
+    "babel-preset-es2015": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addon-notes": "^5.2.8",
+    "@storybook/addon-options": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8"
+  },
+  "scripts": {
+    "build:components": "build-storybook -s ./src/assets",
+    "start:components": "start-storybook -p 6006 -s ./src/assets",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
