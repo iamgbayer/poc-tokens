@@ -5,6 +5,7 @@ import { theme } from 'styled-tools'
 import { motion } from 'framer-motion'
 
 import peoples from '../../assets/images/peoples.svg'
+import extendable from '../../assets/images/extends.svg'
 
 import { Text, Input, Icon, Modal, Button } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
@@ -105,13 +106,29 @@ const Send = styled(Button)`
   `}
 `
 
+const Content = styled.div`
+  position: relative;
+`
+
+const Extends = styled.img`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: ${theme('zindex.behind')};
+  max-width: 60%;
+
+  ${breakpoints.lessThan('md')`
+    max-width: 90%;
+  `}
+`
+
 export const Landing = memo(() => {
   const { colors } = useContext(ThemeContext)
   const [email, setEmail] = useState('')
   const [modal, setModal] = useState(false)
 
   return (
-    <>
+    <Content>
       <Modal isOpen={modal} close={() => setModal(false)}>
         <Description
           color={colors.support.quintiary}
@@ -212,6 +229,8 @@ export const Landing = memo(() => {
           </Col>
         </Subscribe.Content>
       </Subscribe>
-    </>
+
+      <Extends src={extendable} />
+    </Content>
   )
 })

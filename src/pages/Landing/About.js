@@ -1,9 +1,11 @@
 import React, { memo, useContext } from 'react'
 import styled, { css, ThemeContext } from 'styled-components'
 import { useInView } from 'react-intersection-observer'
-import { Container as Containerable } from 'react-grid-system'
+import { Container as Containerable, Hidden } from 'react-grid-system'
 import { motion } from 'framer-motion'
 import { theme, ifProp } from 'styled-tools'
+
+import below from '../../assets/images/below.svg'
 
 import { Text } from '../../components'
 
@@ -13,7 +15,7 @@ const Container = styled(motion.div)`
   width: 100%;
   height: auto;
   padding: 80px 0;
-  background-color: ${theme('colors.quartiary')};
+  position: relative;
 `
 
 const Point = styled(motion.div)`
@@ -24,7 +26,7 @@ const Point = styled(motion.div)`
 
   background-color: ${ifProp(
     { variant: 'primary' },
-    theme('colors.sixtiary'),
+    theme('colors.support.primary'),
     theme('colors.secondary')
   )};
 
@@ -74,6 +76,18 @@ const Subtitle = styled(Text)`
 
   ${breakpoints.greaterThan('sm')`
     font-size: ${theme('font.size.sixty')};
+  `}
+`
+
+const Below = styled.img`
+  width: calc(75% - 5px);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: ${theme('zindex.behind')};
+
+  ${breakpoints.lessThan('x1')`
+    width: 85%;
   `}
 `
 
@@ -132,7 +146,8 @@ export const About = memo(() => {
             <Point variant="primary">
               <Text
                 className="title"
-                color={colors.support.quintiary}
+                color={colors.seventiary}
+                size="eighteen"
                 weight="bold"
               >
                 Colete feedbacks
@@ -144,12 +159,17 @@ export const About = memo(() => {
               </Text>
             </Point>
 
-            <Point variant="secondary">
-              <Text className="title" weight="bold" color={colors.quartiary}>
+            <Point variant="primary">
+              <Text
+                className="title"
+                size="eighteen"
+                weight="bold"
+                color={colors.seventiary}
+              >
                 Defina um roadmap
               </Text>
 
-              <Text weight="light" color={colors.quartiary}>
+              <Text weight="light" color={colors.support.quintiary}>
                 Deixe bem explícito para todos no que atualmente seu time está
                 trabalhando e quais serão os próximos afazeres.
               </Text>
@@ -158,7 +178,8 @@ export const About = memo(() => {
             <Point variant="primary">
               <Text
                 className="title"
-                color={colors.support.quintiary}
+                size="eighteen"
+                color={colors.seventiary}
                 weight="bold"
               >
                 Exponha um changelog
@@ -172,6 +193,10 @@ export const About = memo(() => {
           </Container.Content>
         </motion.div>
       </motion.div>
+
+      <Hidden xs>
+        <Below src={below} />
+      </Hidden>
     </Container>
   )
 })

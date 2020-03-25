@@ -1,7 +1,6 @@
 export const Tokens = {
   colors: {
     primary: '#344356',
-    // secondary: '#204A46',
     secondary: '#3d56f0',
     tertiary: '#efefef',
     quartiary: '#fff',
@@ -12,7 +11,6 @@ export const Tokens = {
       primary: '#f6f6f6',
       secondary: '#e9e9e9',
       tertiary: '#5468ff',
-      // tertiary: '#4cb2a8',
       quartiary: '#607b9e',
       quintiary: '#aaa',
       sixtiary: '#ff0130',
@@ -21,6 +19,7 @@ export const Tokens = {
   },
   zindex: {
     behind: -1,
+    neutral: 0,
     overlay: 9999
   },
   border: {
@@ -41,6 +40,7 @@ export const Tokens = {
       fortyFive: '45px',
       thirty: '30px',
       twenty: '20px',
+      eighteen: '18px',
       sixteen: '16px',
       fifteen: '15px',
       fourteen: '14px',
