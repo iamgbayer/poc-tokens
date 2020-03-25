@@ -1,7 +1,7 @@
 import React, { memo, useContext, useState } from 'react'
 import { Container, Col, Hidden } from 'react-grid-system'
-import styled, { ThemeContext } from 'styled-components'
-import { theme } from 'styled-tools'
+import styled, { ThemeContext, css } from 'styled-components'
+import { theme, ifProp } from 'styled-tools'
 import { motion } from 'framer-motion'
 
 import peoples from '../../assets/images/peoples.svg'
@@ -9,11 +9,19 @@ import extendable from '../../assets/images/extends.svg'
 
 import { Text, Input, Icon, Modal, Button } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
+import { saveLeadAddress } from '../../services'
 
 import { About } from './About'
 
 const Description = styled(Text)`
   max-width: 500px;
+
+  ${ifProp(
+    { center: true },
+    css`
+      text-align: center;
+    `
+  )}
 
   ${breakpoints.lessThan('sm')`
     text-align: center;
@@ -122,23 +130,46 @@ const Extends = styled.img`
   `}
 `
 
+Modal.Content = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
 export const Landing = memo(() => {
   const { colors } = useContext(ThemeContext)
   const [email, setEmail] = useState('')
   const [modal, setModal] = useState(false)
 
+  const save = () => {
+    setEmail('')
+
+    email && saveLeadAddress(email).then(() => setModal(true))
+  }
+
   return (
     <Content>
       <Modal isOpen={modal} close={() => setModal(false)}>
-        <Description
-          color={colors.support.quintiary}
-          size="eighteen"
-          weight="light"
-          height={22}
-          bottom={40}
-        >
-          Tudo certo!
-        </Description>
+        <Modal.Content>
+          <Description
+            color={colors.support.quintiary}
+            size="eighteen"
+            weight="light"
+            center={true}
+            height={22}
+            bottom={30}
+          >
+            Participe da nossa pesquisa para melhorar o serviço, ficaríamos
+            extremamente gratos.
+          </Description>
+          <Button
+            variant="secondary"
+            href="https://feedl.typeform.com/to/EvEKdH"
+          >
+            Participar
+          </Button>
+        </Modal.Content>
       </Modal>
 
       <Header>
@@ -169,7 +200,7 @@ export const Landing = memo(() => {
               >
                 Que tal aproximar mais o usuário da construção do seu produto ou
                 serviço? Receba requisições de novas funcionalidades ou
-                correções, transpareça mais o que é entregue, cadastre se
+                correções, transpareça mais o que é entregue, inscreva-se
                 abaixo.
               </Description>
             </motion.div>
@@ -179,11 +210,11 @@ export const Landing = memo(() => {
                 <Input
                   iconAlign="right"
                   full={true}
-                  label="Seu email para obter o acesso antecipado"
+                  label="Inscreva-se para obter o acesso antecipado"
                   placeholder="john@doe.com"
                   onChange={({ target }) => setEmail(target.value)}
                   value={email}
-                  onClickIcon={() => setModal(true)}
+                  onClickIcon={save}
                   icon={({ width, height, color }) => (
                     <Icon
                       name="right"
@@ -215,7 +246,7 @@ export const Landing = memo(() => {
             <Input
               full={true}
               id="email"
-              label="Seu email para obter o acesso antecipado"
+              label="Inscreva-se para obter o acesso antecipado"
               placeholder="john@doe.com"
               onChange={({ target }) => setEmail(target.value)}
               value={email}
@@ -223,7 +254,7 @@ export const Landing = memo(() => {
           </Col>
 
           <Col sm={12} md={2} lg={2} offset={{ md: 1, lg: 1 }}>
-            <Send variant="secondary" onClick={() => setModal(true)}>
+            <Send full={true} variant="secondary" onClick={save}>
               Enviar
             </Send>
           </Col>

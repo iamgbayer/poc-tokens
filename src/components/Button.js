@@ -6,7 +6,7 @@ import { Text as Texteable } from './Text'
 import { Box } from './Box'
 
 const Container = styled(Box)`
-  width: ${ifProp({ full: true }, '100%', 'unset')};
+  width: ${ifProp({ full: true }, '100%', 'max-content')};
   height: ${switchProp('size', {
     default: '40px',
     large: '48px'
@@ -57,13 +57,16 @@ export const Button = ({
   children,
   icon,
   onClick,
+  href,
   ...props
 }) => {
   const { colors } = useContext(ThemeContext)
 
+  const on = () => (href ? window.open(href, '_blank') : onClick && onClick())
+
   return (
     <Container
-      onClick={onClick}
+      onClick={on}
       size={size}
       icon={icon}
       full={full}
