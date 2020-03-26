@@ -1,0 +1,34 @@
+{
+  "landing": {
+    "modal": {
+      "description": "Participe da nossa pesquisa para melhorar o serviço, ficaríamos extremamente gratos.",
+      "button": "Participar"
+    },
+    "header": {
+      "title": "Traga seus usuários para o cíclo de decisão.",
+      "description": "Que tal aproximar mais o usuário da construção do seu produto ou serviço? Receba requisições de novas funcionalidades ou correções, transpareça mais o que é entregue, inscreva-se abaixo.",
+      "email": "Inscreva-se para obter o acesso antecipado"
+    },
+    "about": {
+      "title": "Como funciona?",
+      "subtitle": "Some explanation here as it work, unde omnis iste natus error sit voluptatem.",
+      "feedback": {
+        "title": "Colete feedbacks",
+        "description": "Tenha uma visão clara de novas funcionalidades e correções que estão sendo mais sugeridas por seus usuário em um único lugar."
+      },
+      "roadmap": {
+        "title": "Defina um roadmap",
+        "description": "Deixe bem explícito para todos no que atualmente seu time está trabalhando e quais serão os próximos afazeres."
+      },
+      "changelog": {
+        "title": "Exponha um changelog",
+        "description": "Anuncie os últimos lançamentos do seu produto, engajando seus usuários mais cedo com novas funcionalidades e correções."
+      }
+    },
+    "subscribe": {
+      "title": "Ainda não se inscreveu?",
+      "email": "Inscreva-se para obter o acesso antecipado",
+      "button": "Enviar"
+    }
+  }
+}

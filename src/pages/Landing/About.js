@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import { Container as Containerable, Hidden } from 'react-grid-system'
 import { motion } from 'framer-motion'
 import { theme, ifProp } from 'styled-tools'
+import { useTranslation } from 'react-i18next'
 
 import below from '../../assets/images/below.svg'
 
@@ -93,6 +94,7 @@ const Below = styled.img`
 
 export const About = memo(() => {
   const { colors } = useContext(ThemeContext)
+  const { t } = useTranslation()
 
   const [about, inAbout] = useInView({
     rootMargin: '-100px 0px'
@@ -115,7 +117,7 @@ export const About = memo(() => {
           animate={inAbout ? 'enter' : 'exit'}
         >
           <Subtitle color={colors.seventiary} weight="bold" bottom={20}>
-            Como funciona?
+            {t('landing.about.title')}
           </Subtitle>
         </motion.div>
 
@@ -131,8 +133,7 @@ export const About = memo(() => {
             height={22}
             bottom={80}
           >
-            Some explanation here as it work, unde omnis iste natus error sit
-            voluptatem.
+            {t('landing.about.subtitle')}
           </Explanation>
         </motion.div>
 
@@ -150,12 +151,11 @@ export const About = memo(() => {
                 size="eighteen"
                 weight="bold"
               >
-                Colete feedbacks
+                {t('landing.about.feedback.title')}
               </Text>
 
               <Text weight="light" color={colors.support.quintiary}>
-                Tenha uma visão clara de novas funcionalidades e correções que
-                estão sendo mais sugeridas por seus usuário em um único lugar.
+                {t('landing.about.feedback.description')}
               </Text>
             </Point>
 
@@ -166,12 +166,11 @@ export const About = memo(() => {
                 weight="bold"
                 color={colors.seventiary}
               >
-                Defina um roadmap
+                {t('landing.about.roadmap.title')}
               </Text>
 
               <Text weight="light" color={colors.support.quintiary}>
-                Deixe bem explícito para todos no que atualmente seu time está
-                trabalhando e quais serão os próximos afazeres.
+                {t('landing.about.roadmap.description')}
               </Text>
             </Point>
 
@@ -182,12 +181,11 @@ export const About = memo(() => {
                 color={colors.seventiary}
                 weight="bold"
               >
-                Exponha um changelog
+                {t('landing.about.changelog.title')}
               </Text>
 
               <Text weight="light" color={colors.support.quintiary}>
-                Anuncie os últimos lançamentos do seu produto, engajando seus
-                usuários mais cedo com novas funcionalidades e correções.
+                {t('landing.about.changelog.description')}
               </Text>
             </Point>
           </Container.Content>

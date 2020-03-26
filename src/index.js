@@ -7,6 +7,8 @@ import Router from './Router'
 
 import { Tokens, Reset } from './components'
 
+import './i18n'
+
 ReactDOM.render(
   <ThemeProvider theme={Tokens}>
     <React.StrictMode>

@@ -3,11 +3,12 @@ import { Container, Col, Hidden } from 'react-grid-system'
 import styled, { ThemeContext, css } from 'styled-components'
 import { theme, ifProp } from 'styled-tools'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 import peoples from '../../assets/images/peoples.svg'
 import extendable from '../../assets/images/extends.svg'
 
-import { Text, Input, Icon, Modal, Button } from '../../components'
+import { Text, Input, Icon, Modal, Button, Box } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
 import { saveLeadAddress } from '../../services'
 
@@ -137,10 +138,23 @@ Modal.Content = styled.div`
   flex-direction: column;
 `
 
+const Languages = styled(motion.div)`
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  z-index: ${theme('zindex.overlay')};
+`
+
+const Language = styled(Text)``
+
 export const Landing = memo(() => {
   const { colors } = useContext(ThemeContext)
   const [email, setEmail] = useState('')
   const [modal, setModal] = useState(false)
+  const { t, i18n } = useTranslation()
+
+  const changeLanguage = language => () => i18n.changeLanguage(language)
 
   const save = () => {
     setEmail('')
@@ -150,6 +164,22 @@ export const Landing = memo(() => {
 
   return (
     <Content>
+      <Languages variants={enterWithY(10)}>
+        <Language
+          color={colors.support.quintiary}
+          onClick={changeLanguage('en')}
+        >
+          🇺🇸
+        </Language>
+        <Language
+          color={colors.support.quintiary}
+          left={15}
+          onClick={changeLanguage('pt-BR')}
+        >
+          🇧🇷
+        </Language>
+      </Languages>
+
       <Modal isOpen={modal} close={() => setModal(false)}>
         <Modal.Content>
           <Description
@@ -160,14 +190,13 @@ export const Landing = memo(() => {
             height={22}
             bottom={30}
           >
-            Participe da nossa pesquisa para melhorar o serviço, ficaríamos
-            extremamente gratos.
+            {t('landing.modal.title')}
           </Description>
           <Button
             variant="secondary"
             href="https://feedl.typeform.com/to/EvEKdH"
           >
-            Participar
+            {t('landing.modal.button')}
           </Button>
         </Modal.Content>
       </Modal>
@@ -185,7 +214,7 @@ export const Landing = memo(() => {
           >
             <motion.div variants={enterWithY(200)}>
               <Title color={colors.seventiary} weight="bold">
-                Traga seus usuários para o cíclo de decisão.
+                {t('landing.header.title')}
               </Title>
             </motion.div>
 
@@ -198,10 +227,7 @@ export const Landing = memo(() => {
                 top={30}
                 bottom={40}
               >
-                Que tal aproximar mais o usuário da construção do seu produto ou
-                serviço? Receba requisições de novas funcionalidades ou
-                correções, transpareça mais o que é entregue, inscreva-se
-                abaixo.
+                {t('landing.header.description')}
               </Description>
             </motion.div>
 
@@ -210,7 +236,7 @@ export const Landing = memo(() => {
                 <Input
                   iconAlign="right"
                   full={true}
-                  label="Inscreva-se para obter o acesso antecipado"
+                  label={t('landing.header.email')}
                   placeholder="john@doe.com"
                   onChange={({ target }) => setEmail(target.value)}
                   value={email}
@@ -238,7 +264,7 @@ export const Landing = memo(() => {
 
       <Subscribe>
         <Subtitle color={colors.seventiary} weight="bold" bottom={40}>
-          Ainda não se inscreveu?
+          {t('landing.subscribe.title')}
         </Subtitle>
 
         <Subscribe.Content>
@@ -246,7 +272,7 @@ export const Landing = memo(() => {
             <Input
               full={true}
               id="email"
-              label="Inscreva-se para obter o acesso antecipado"
+              label={t('landing.subscribe.email')}
               placeholder="john@doe.com"
               onChange={({ target }) => setEmail(target.value)}
               value={email}
@@ -255,7 +281,7 @@ export const Landing = memo(() => {
 
           <Col sm={12} md={2} lg={2} offset={{ md: 1, lg: 1 }}>
             <Send full={true} variant="secondary" onClick={save}>
-              Enviar
+              {t('landing.subscribe.button')}
             </Send>
           </Col>
         </Subscribe.Content>
