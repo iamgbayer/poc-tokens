@@ -35,6 +35,7 @@ export const Tokens = {
   font: {
     family: {
       primary: 'HK Grotesk, sans-serif'
+      // primary: 'Rubik, sans-serif'
     },
     size: {
       fortyFive: '45px',

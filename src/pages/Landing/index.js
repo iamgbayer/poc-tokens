@@ -146,7 +146,9 @@ const Languages = styled(motion.div)`
   z-index: ${theme('zindex.overlay')};
 `
 
-const Language = styled(Text)``
+const Language = styled(Text)`
+  cursor: pointer;
+`
 
 export const Landing = memo(() => {
   const { colors } = useContext(ThemeContext)
@@ -171,6 +173,7 @@ export const Landing = memo(() => {
         >
           🇺🇸
         </Language>
+
         <Language
           color={colors.support.quintiary}
           left={15}
@@ -192,6 +195,7 @@ export const Landing = memo(() => {
           >
             {t('landing.modal.title')}
           </Description>
+
           <Button
             variant="secondary"
             href="https://feedl.typeform.com/to/EvEKdH"
