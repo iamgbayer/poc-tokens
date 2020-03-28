@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import peoples from '../../assets/images/peoples.svg'
 import extendable from '../../assets/images/extends.svg'
 
-import { Text, Input, Icon, Modal, Button, Box } from '../../components'
+import { Text, Input, Icon, Modal, Button } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
 import { saveLeadAddress } from '../../services'
 

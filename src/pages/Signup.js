@@ -47,7 +47,7 @@ const initialValues = {
   domain: ''
 }
 
-export const Signup = () => {
+export default function Signup() {
   const { colors } = useContext(ThemeContext)
 
   const { handleChange, values, isValid, errors, validateForm } = useFormik({
