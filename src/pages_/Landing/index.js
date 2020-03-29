@@ -1,9 +1,9 @@
-import React, { memo, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Container, Col, Hidden } from 'react-grid-system'
 import styled, { ThemeContext, css } from 'styled-components'
 import { theme, ifProp } from 'styled-tools'
 import { motion } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-translate'
 
 import peoples from '../../assets/images/peoples.svg'
 import extendable from '../../assets/images/extends.svg'
@@ -12,7 +12,7 @@ import { Text, Input, Icon, Modal, Button } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
 import { saveLeadAddress } from '../../services'
 
-import { About } from './About'
+import About from './About'
 
 const Description = styled(Text)`
   max-width: 500px;
@@ -150,11 +150,11 @@ const Language = styled(Text)`
   cursor: pointer;
 `
 
-export const Landing = memo(() => {
+export default function Landing() {
   const { colors } = useContext(ThemeContext)
   const [email, setEmail] = useState('')
   const [modal, setModal] = useState(false)
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const changeLanguage = language => () => i18n.changeLanguage(language)
 
@@ -193,14 +193,14 @@ export const Landing = memo(() => {
             height={22}
             bottom={30}
           >
-            {t('landing.modal.title')}
+            {t('translation:landing.modal.title')}
           </Description>
 
           <Button
             variant="secondary"
             href="https://feedl.typeform.com/to/EvEKdH"
           >
-            {t('landing.modal.button')}
+            {t('translation:landing.modal.button')}
           </Button>
         </Modal.Content>
       </Modal>
@@ -218,7 +218,7 @@ export const Landing = memo(() => {
           >
             <motion.div variants={enterWithY(200)}>
               <Title color={colors.seventiary} weight="bold">
-                {t('landing.header.title')}
+                {t('translation:landing.header.title')}
               </Title>
             </motion.div>
 
@@ -231,7 +231,7 @@ export const Landing = memo(() => {
                 top={30}
                 bottom={40}
               >
-                {t('landing.header.description')}
+                {t('translation:landing.header.description')}
               </Description>
             </motion.div>
 
@@ -240,7 +240,7 @@ export const Landing = memo(() => {
                 <Input
                   iconAlign="right"
                   full={true}
-                  label={t('landing.header.email')}
+                  label={t('translation:landing.header.email')}
                   placeholder="john@doe.com"
                   onChange={({ target }) => setEmail(target.value)}
                   value={email}
@@ -268,7 +268,7 @@ export const Landing = memo(() => {
 
       <Subscribe>
         <Subtitle color={colors.seventiary} weight="bold" bottom={40}>
-          {t('landing.subscribe.title')}
+          {t('translation:landing.subscribe.title')}
         </Subtitle>
 
         <Subscribe.Content>
@@ -276,7 +276,7 @@ export const Landing = memo(() => {
             <Input
               full={true}
               id="email"
-              label={t('landing.subscribe.email')}
+              label={t('translation:landing.subscribe.email')}
               placeholder="john@doe.com"
               onChange={({ target }) => setEmail(target.value)}
               value={email}
@@ -285,7 +285,7 @@ export const Landing = memo(() => {
 
           <Col sm={12} md={2} lg={2} offset={{ md: 1, lg: 1 }}>
             <Send full={true} variant="secondary" onClick={save}>
-              {t('landing.subscribe.button')}
+              {t('translation:landing.subscribe.button')}
             </Send>
           </Col>
         </Subscribe.Content>
@@ -294,4 +294,4 @@ export const Landing = memo(() => {
       <Extends src={extendable} />
     </Content>
   )
-})
+}

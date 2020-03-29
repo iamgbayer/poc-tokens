@@ -1,15 +1,16 @@
 import React from 'react'
 
-import { Landing } from './Landing'
+import Landing from './Landing'
+import { hasTenantOfString } from '../helpers'
 
 export default function Index() {
   return <Landing />
 }
 
 export async function getServerSideProps({ req }) {
-  const [subdomain, domain] = req.headers.host.split('.')
+  const hasTenant = hasTenantOfString(req.headers.host)
 
-  if (!domain) {
+  if (!hasTenant) {
     return {
       props: {}
     }

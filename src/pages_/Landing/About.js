@@ -1,10 +1,10 @@
-import React, { memo, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled, { css, ThemeContext } from 'styled-components'
 import { useInView } from 'react-intersection-observer'
 import { Container as Containerable, Hidden } from 'react-grid-system'
 import { motion } from 'framer-motion'
 import { theme, ifProp } from 'styled-tools'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-translate'
 
 import below from '../../assets/images/below.svg'
 
@@ -92,7 +92,7 @@ const Below = styled.img`
   `}
 `
 
-export const About = memo(() => {
+export default function About() {
   const { colors } = useContext(ThemeContext)
   const { t } = useTranslation()
 
@@ -117,7 +117,7 @@ export const About = memo(() => {
           animate={inAbout ? 'enter' : 'exit'}
         >
           <Subtitle color={colors.seventiary} weight="bold" bottom={20}>
-            {t('landing.about.title')}
+            {t('translation:landing.about.title')}
           </Subtitle>
         </motion.div>
 
@@ -133,7 +133,7 @@ export const About = memo(() => {
             height={22}
             bottom={80}
           >
-            {t('landing.about.subtitle')}
+            {t('translation:landing.about.subtitle')}
           </Explanation>
         </motion.div>
 
@@ -151,11 +151,11 @@ export const About = memo(() => {
                 size="eighteen"
                 weight="bold"
               >
-                {t('landing.about.feedback.title')}
+                {t('translation:landing.about.feedback.title')}
               </Text>
 
               <Text weight="light" color={colors.support.quintiary}>
-                {t('landing.about.feedback.description')}
+                {t('translation:landing.about.feedback.description')}
               </Text>
             </Point>
 
@@ -166,11 +166,11 @@ export const About = memo(() => {
                 weight="bold"
                 color={colors.seventiary}
               >
-                {t('landing.about.roadmap.title')}
+                {t('translation:landing.about.roadmap.title')}
               </Text>
 
               <Text weight="light" color={colors.support.quintiary}>
-                {t('landing.about.roadmap.description')}
+                {t('translation:landing.about.roadmap.description')}
               </Text>
             </Point>
 
@@ -181,11 +181,11 @@ export const About = memo(() => {
                 color={colors.seventiary}
                 weight="bold"
               >
-                {t('landing.about.changelog.title')}
+                {t('translation:landing.about.changelog.title')}
               </Text>
 
               <Text weight="light" color={colors.support.quintiary}>
-                {t('landing.about.changelog.description')}
+                {t('translation:landing.about.changelog.description')}
               </Text>
             </Point>
           </Container.Content>
@@ -197,4 +197,4 @@ export const About = memo(() => {
       </Hidden>
     </Container>
   )
-})
+}

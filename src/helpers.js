@@ -12,3 +12,9 @@ export const enterWithY = y => ({
   enter: { opacity: 1, y },
   exit: { opacity: 0 }
 })
+
+export const hasTenantOfString = string => {
+  const [subdomain, domain] = string.split('.')
+
+  return !!domain
+}

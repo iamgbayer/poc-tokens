@@ -4,6 +4,7 @@ import { useFormik } from 'formik'
 import styled, { ThemeContext } from 'styled-components'
 import { theme } from 'styled-tools'
 
+import { hasTenantOfString } from '../helpers'
 import { Input, Text, Button } from '../components'
 
 const Container = styled.div`
@@ -45,6 +46,10 @@ const initialValues = {
   password: '',
   company: '',
   domain: ''
+}
+
+export async function getServerSideProps({ req }) {
+  const hasTenant = hasTenantOfString(req.headers.host)
 }
 
 export default function Signup() {
