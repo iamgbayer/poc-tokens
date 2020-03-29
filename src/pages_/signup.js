@@ -50,6 +50,10 @@ const initialValues = {
 
 export async function getServerSideProps({ req }) {
   const hasTenant = hasTenantOfString(req.headers.host)
+
+  return {
+    props: {}
+  }
 }
 
 export default function Signup() {
