@@ -3,7 +3,7 @@
   "defaultLanguage": "en",
   "finalPagesDir": "src/pages",
   "currentPagesDir": "src/pages_",
-  "localesPath": "public/locales",
+  "localesPath": "src/locales",
   "pages": {
     "*": ["translation"]
   }
