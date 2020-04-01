@@ -2,33 +2,38 @@
   "landing": {
     "modal": {
       "title": "Participe da nossa pesquisa para melhorar o serviço, ficaríamos extremamente gratos.",
-      "button": "Participar"
+      "button": "Participate"
     },
     "header": {
-      "title": "Traga seus usuários para o cíclo de decisão.",
-      "description": "Que tal aproximar mais o usuário da construção do seu produto ou serviço? Receba requisições de novas funcionalidades ou correções, transpareça mais o que é entregue, inscreva-se abaixo.",
-      "email": "Inscreva-se para obter o acesso antecipado"
+      "title": "Ship stuff people need.",
+      "description": "Product teams are overwhelmed with tools. With feedl, your entire feedback workflow is in one place.",
+      "email": "Sign up for early access"
     },
     "about": {
-      "title": "Como funciona?",
-      "subtitle": "Some explanation here as it work, unde omnis iste natus error sit voluptatem.",
+      "title": "What feedl solves for you",
+      "subtitle": "The all-in-one tool to explore, prioritize, plan, deliver, and communicate featues with your customers.",
       "feedback": {
-        "title": "Colete feedbacks",
-        "description": "Tenha uma visão clara de novas funcionalidades e correções que estão sendo mais sugeridas por seus usuário em um único lugar."
+        "title": "Listen to your users, stakeholders, and teammates.",
+        "description": "Share a portal with users from inside and outside your organization to gather their insights in an engaging way with voting and commenting features."
+      },
+      "prioritize": {
+        "title": "Prioritize what to build with confidence",
+        "description": "Use weighted scores for each of your users' requests to identify quick wins by viusalizing priorities on a map based on complexity and value drivers."
       },
       "roadmap": {
-        "title": "Defina um roadmap",
-        "description": "Deixe bem explícito para todos no que atualmente seu time está trabalhando e quais serão os próximos afazeres."
+        "title": "Plan your product priorities.",
+        "description": "Build roadmaps that links your users' requests to the high level goals so everyone has visibility on what's coming."
       },
       "changelog": {
-        "title": "Exponha um changelog",
-        "description": "Anuncie os últimos lançamentos do seu produto, engajando seus usuários mais cedo com novas funcionalidades e correções."
+        "title": "Keep users and stakeholders updated",
+        "subtitle": "Keep your organization and users engaged with product updates announcements",
+        "description": "Announce your latest product changes, new features, bug fixes, news and more with Beamer’s changelog app and improve user engagement."
       }
     },
     "subscribe": {
       "title": "Ainda não se inscreveu?",
-      "email": "Inscreva-se para obter o acesso antecipado",
-      "button": "Enviar"
+      "email": "Sign up for early access",
+      "button": "Send"
     }
   }
 }
