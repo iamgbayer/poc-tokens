@@ -39,6 +39,7 @@ export const Tokens = {
     },
     size: {
       fortyFive: '45px',
+      forty: '40px',
       thirty: '30px',
       twenty: '20px',
       eighteen: '18px',

@@ -28,6 +28,7 @@ const Domain = styled.div`
   display: flex;
   align-items: flex-end;
 `
+
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
   email: Yup.string()

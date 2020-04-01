@@ -8,6 +8,7 @@ import { useTranslation } from 'next-translate'
 
 import peoples from '../../assets/images/peoples.svg'
 import extendable from '../../assets/images/extends.svg'
+import firstWave from '../../assets/images/firstWave.svg'
 
 import { Text, Input, Icon, Modal, Button } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
@@ -55,8 +56,10 @@ const Title = styled(Text)`
 
 const Header = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   position: relative;
+  display: flex;
+  align-items: center;
 
   ${breakpoints.lessThan('sm')`
     display: flex;
@@ -65,9 +68,13 @@ const Header = styled.div`
   `}
 `
 
+Header.Container = styled(Container)`
+  display: flex;
+  align-items: center;
+`
+
 Header.Content = styled(motion.div)`
   height: 100%;
-  padding-top: 10%;
 
   ${breakpoints.lessThan('sm')`
     padding-top: 0;
@@ -76,15 +83,19 @@ Header.Content = styled(motion.div)`
 `
 
 const Peoples = styled.img`
+  width: 50%;
+
+  ${breakpoints.lessThan('x1')`
+    width: 40%;
+  `}
+`
+
+const FirstWave = styled.img`
+  width: 70%;
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 75%;
   z-index: ${theme('zindex.behind')};
-
-  ${breakpoints.lessThan('x1')`
-    width: 85%;
-  `}
 `
 
 const Subtitle = styled(Text)`
@@ -225,7 +236,7 @@ export default function Landing() {
       </Modal>
 
       <Header>
-        <Container>
+        <Header.Container>
           <Header.Content
             exit="exit"
             initial="initial"
@@ -236,14 +247,14 @@ export default function Landing() {
             }}
           >
             <motion.div variants={enterWithY(200)}>
-              <Title color={colors.seventiary} weight="bold">
+              <Title color={colors.primary} weight="bold">
                 {t('translation:landing.header.title')}
               </Title>
             </motion.div>
 
             <motion.div variants={enterWithY(200)}>
               <Description
-                color={colors.support.quintiary}
+                color={colors.support.quartiary}
                 size="eighteen"
                 weight="light"
                 height={22}
@@ -276,17 +287,19 @@ export default function Landing() {
               </Email>
             </motion.div>
           </Header.Content>
-        </Container>
 
-        <Hidden xs>
-          <Peoples src={peoples} />
-        </Hidden>
+          <Hidden xs>
+            <Peoples src={peoples} />
+          </Hidden>
+        </Header.Container>
+
+        <FirstWave src={firstWave} />
       </Header>
 
       <About />
 
       <Subscribe>
-        <Subtitle color={colors.seventiary} weight="bold" bottom={40}>
+        <Subtitle color={colors.primary} weight="bold" bottom={40}>
           {t('translation:landing.subscribe.title')}
         </Subtitle>
 

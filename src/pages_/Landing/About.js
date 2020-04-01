@@ -1,52 +1,117 @@
 import React, { useContext } from 'react'
-import styled, { css, ThemeContext } from 'styled-components'
+import styled, { ThemeContext, css } from 'styled-components'
 import { useInView } from 'react-intersection-observer'
 import { Container as Containerable, Hidden } from 'react-grid-system'
 import { motion } from 'framer-motion'
-import { theme, ifProp } from 'styled-tools'
+import { theme, ifProp, prop } from 'styled-tools'
 import { useTranslation } from 'next-translate'
 
-import below from '../../assets/images/below.svg'
+import secondWave from '../../assets/images/secondWave.svg'
+
+import prioritize from '../../assets/images/prioritize.svg'
+import roadmap from '../../assets/images/roadmap.svg'
+import feedback from '../../assets/images/feedback.svg'
 
 import { Text } from '../../components'
+import { enterWithY, breakpoints, enterWithX } from '../../helpers'
 
-import { enterWithY, breakpoints } from '../../helpers'
+const Card = ({
+  justifyLeft = false,
+  title,
+  width = 100,
+  description,
+  image,
+  hasMargin = false
+}) => {
+  const { colors } = useContext(ThemeContext)
+
+  return (
+    <Card.Container hasMargin={hasMargin} variants={enterWithY(200)}>
+      <Hidden xs={true}>
+        {justifyLeft && <Image width={width} src={image} />}
+      </Hidden>
+
+      <Card.Content justifyLeft={justifyLeft}>
+        <Card.Title
+          className="title"
+          color={colors.primary}
+          size="forty"
+          weight="bold"
+        >
+          {title}
+        </Card.Title>
+
+        <Card.Description
+          weight="light"
+          color={colors.support.quartiary}
+          size="twenty"
+        >
+          {description}
+        </Card.Description>
+      </Card.Content>
+
+      <Hidden xs={true}>
+        {!justifyLeft && <Image width={width} src={image} />}
+      </Hidden>
+    </Card.Container>
+  )
+}
+
+const Image = styled.img`
+  width: 100%;
+  max-width: ${prop('width')}%;
+`
 
 const Container = styled(motion.div)`
   width: 100%;
   height: auto;
-  padding: 80px 0;
   position: relative;
 `
 
-const Point = styled(motion.div)`
-  width: 300px;
-  height: 260px;
-  padding: 45px;
-  border-radius: ${theme('border.radius.five')};
+Card.Title = styled(Text)`
+  ${breakpoints.lessThan('lg')`
+    font-size: ${theme('font.size.twenty')};
+  `}
+`
 
-  background-color: ${ifProp(
-    { variant: 'primary' },
-    theme('colors.support.primary'),
-    theme('colors.secondary')
-  )};
+Card.Description = styled(Text)`
+  ${breakpoints.lessThan('lg')`
+    font-size: ${theme('font.size.twelve')};
+  `}
+`
+
+Card.Container = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 
   ${ifProp(
-    { variant: 'primary' },
+    { hasMargin: true },
     css`
-      border: 1px solid ${theme('colors.support.secondary')};
+      margin: 130px 0;
     `
   )}
+`
+
+Card.Content = styled(motion.div)`
+  width: 100%;
+  max-width: 380px;
 
   .title {
     margin-bottom: 30px;
   }
 
   ${breakpoints.lessThan('lg')`
-    width: 100%;
-    height: 120px;
-    margin-bottom: 30px;
-    padding: 15px;
+    ${ifProp(
+      { justifyLeft: true },
+      css`
+        padding-left: 25px;
+      `,
+      css`
+        padding-right: 20px;
+      `
+    )}
 
     .title {
       margin-bottom: 10px;
@@ -54,16 +119,17 @@ const Point = styled(motion.div)`
   `}
 
   ${breakpoints.lessThan('sm')`
-    height: 150px;
+    text-align: center;
+    max-width: 100%;
+    padding: 0;
   `}
 `
 
 Container.Content = styled(Containerable)`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 
   ${breakpoints.lessThan('lg')`
-    flex-direction: column;
   `}
 `
 
@@ -80,16 +146,12 @@ const Subtitle = styled(Text)`
   `}
 `
 
-const Below = styled.img`
-  width: calc(75% - 5px);
+const SecondWave = styled.img`
+  width: calc(70% - 5px);
   position: absolute;
   right: 0;
   top: 0;
   z-index: ${theme('zindex.behind')};
-
-  ${breakpoints.lessThan('x1')`
-    width: 85%;
-  `}
 `
 
 export default function About() {
@@ -105,10 +167,9 @@ export default function About() {
       <motion.div
         exit="exit"
         initial="initial"
-        animate="enter"
+        animate={inAbout ? 'enter' : 'exit'}
         variants={{
-          initial: { y: -200 },
-          enter: { transition: { staggerChildren: 0.6 } }
+          initial: { y: -200 }
         }}
       >
         <motion.div
@@ -116,7 +177,7 @@ export default function About() {
           initial="inital"
           animate={inAbout ? 'enter' : 'exit'}
         >
-          <Subtitle color={colors.seventiary} weight="bold" bottom={20}>
+          <Subtitle color={colors.primary} weight="bold" bottom={20}>
             {t('translation:landing.about.title')}
           </Subtitle>
         </motion.div>
@@ -127,7 +188,7 @@ export default function About() {
           animate={inAbout ? 'enter' : 'exit'}
         >
           <Explanation
-            color={colors.support.quintiary}
+            color={colors.support.quartiary}
             size="eighteen"
             weight="light"
             height={22}
@@ -137,64 +198,52 @@ export default function About() {
           </Explanation>
         </motion.div>
 
-        <motion.div
-          variants={enterWithY(200)}
-          exit="exit"
-          initial="inital"
-          animate={inAbout ? 'enter' : 'exit'}
-        >
-          <Container.Content>
-            <Point variant="primary">
-              <Text
-                className="title"
-                color={colors.seventiary}
-                size="eighteen"
-                weight="bold"
-              >
-                {t('translation:landing.about.feedback.title')}
-              </Text>
+        <Container.Content>
+          <motion.div
+            exit="exit"
+            initial="initial"
+            animate={inAbout ? 'enter' : 'exit'}
+            variants={{
+              enter: {
+                initial: { y: -200 },
+                transition: {
+                  staggerChildren: 0.8
+                }
+              }
+            }}
+          >
+            <Card
+              inAbout={inAbout}
+              image={feedback}
+              width={50}
+              title={t('translation:landing.about.feedback.title')}
+              description={t('translation:landing.about.feedback.description')}
+            />
 
-              <Text weight="light" color={colors.support.quintiary}>
-                {t('translation:landing.about.feedback.description')}
-              </Text>
-            </Point>
+            <Card
+              justifyLeft={true}
+              hasMargin={true}
+              width={50}
+              image={prioritize}
+              inAbout={inAbout}
+              title={t('translation:landing.about.prioritize.title')}
+              description={t(
+                'translation:landing.about.prioritize.description'
+              )}
+            />
 
-            <Point variant="primary">
-              <Text
-                className="title"
-                size="eighteen"
-                weight="bold"
-                color={colors.seventiary}
-              >
-                {t('translation:landing.about.roadmap.title')}
-              </Text>
-
-              <Text weight="light" color={colors.support.quintiary}>
-                {t('translation:landing.about.roadmap.description')}
-              </Text>
-            </Point>
-
-            <Point variant="primary">
-              <Text
-                className="title"
-                size="eighteen"
-                color={colors.seventiary}
-                weight="bold"
-              >
-                {t('translation:landing.about.changelog.title')}
-              </Text>
-
-              <Text weight="light" color={colors.support.quintiary}>
-                {t('translation:landing.about.changelog.description')}
-              </Text>
-            </Point>
-          </Container.Content>
-        </motion.div>
+            <Card
+              inAbout={inAbout}
+              width={50}
+              image={roadmap}
+              title={t('translation:landing.about.roadmap.title')}
+              description={t('translation:landing.about.roadmap.description')}
+            />
+          </motion.div>
+        </Container.Content>
       </motion.div>
 
-      <Hidden xs>
-        <Below src={below} />
-      </Hidden>
+      <SecondWave src={secondWave} />
     </Container>
   )
 }

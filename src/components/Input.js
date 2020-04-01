@@ -107,7 +107,7 @@ const Content = styled.div`
   align-items: center;
   width: 28px;
   height: 28px;
-  background-color: ${theme('colors.secondary')};
+  background-color: ${theme('colors.primary')};
   border-radius: ${theme('border.radius.five')};
   display: flex;
   justify-content: center;

@@ -1,7 +1,7 @@
 {
   "landing": {
     "modal": {
-      "description": "Participe da nossa pesquisa para melhorar o serviço, ficaríamos extremamente gratos.",
+      "title": "Participe da nossa pesquisa para melhorar o serviço, ficaríamos extremamente gratos.",
       "button": "Participar"
     },
     "header": {
