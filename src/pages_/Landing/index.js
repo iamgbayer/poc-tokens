@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import Head from 'next/head'
 import { Container, Col, Hidden } from 'react-grid-system'
 import styled, { ThemeContext, css } from 'styled-components'
 import { theme, ifProp } from 'styled-tools'
@@ -166,6 +167,24 @@ export default function Landing() {
 
   return (
     <Content>
+      <Head>
+        <title>This page has a title 🤔</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <meta property="og:url" content="http://welcome.feedl.co/" />
+        <meta property="og:type" content="product" />
+        <meta property="og:site_name" content="Feedl" />
+        <meta property="og:title" content="Ship stuff people need | Feedl" />
+        <meta property="og:description" content="With feedl, your entire feedback workflow is in one place." />
+        <meta property="og:image" content="http://welcome.feedl.co/assets/images/meta-picture.jpg" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="http://Feedl.app/" />
+        <meta name="twitter:title" content="Ship stuff people need | Feedl" />
+        <meta name="twitter:description" content="With feedl, your entire feedback workflow is in one place." />
+        <meta name="twitter:image" content="http://welcome.feedl.co/assets/images/meta-picture.jpg" />
+      </Head>
       <Languages variants={enterWithY(10)}>
         <Language
           color={colors.support.quintiary}
