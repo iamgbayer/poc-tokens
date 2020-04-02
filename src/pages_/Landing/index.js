@@ -180,7 +180,7 @@ export default function Landing() {
   return (
     <Content>
       <Head>
-        <title>This page has a title 🤔</title>
+        <title>{t('translation:landing.meta.title')}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
