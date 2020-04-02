@@ -1,7 +1,7 @@
 {
   "landing": {
     "modal": {
-      "title": "Participe da nossa pesquisa para melhorar o serviço, ficaríamos extremamente gratos.",
+      "title": "Be part of the development cycle of feedl, takes less than 5 minutos and help us a lot.",
       "button": "Participate"
     },
     "header": {
@@ -31,7 +31,7 @@
       }
     },
     "subscribe": {
-      "title": "Ainda não se inscreveu?",
+      "title": "Not signed up yet?",
       "email": "Sign up for early access",
       "button": "Send"
     }
