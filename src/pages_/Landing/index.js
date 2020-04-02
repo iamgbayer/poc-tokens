@@ -60,6 +60,7 @@ const Header = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  z-index: ${theme('zindex.overlay')};
 
   ${breakpoints.lessThan('sm')`
     display: flex;
@@ -187,25 +188,35 @@ export default function Landing() {
         <meta property="og:type" content="product" />
         <meta property="og:site_name" content="Feedl" />
         <meta property="og:title" content="Ship stuff people need | Feedl" />
-        <meta property="og:description" content="With feedl, your entire feedback workflow is in one place." />
-        <meta property="og:image" content="http://welcome.feedl.co/assets/images/meta-picture.jpg" />
+        <meta
+          property="og:description"
+          content="With feedl, your entire feedback workflow is in one place."
+        />
+        <meta
+          property="og:image"
+          content="http://welcome.feedl.co/assets/images/meta-picture.jpg"
+        />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="http://Feedl.app/" />
         <meta name="twitter:title" content="Ship stuff people need | Feedl" />
-        <meta name="twitter:description" content="With feedl, your entire feedback workflow is in one place." />
-        <meta name="twitter:image" content="http://welcome.feedl.co/assets/images/meta-picture.jpg" />
+        <meta
+          name="twitter:description"
+          content="With feedl, your entire feedback workflow is in one place."
+        />
+        <meta
+          name="twitter:image"
+          content="http://welcome.feedl.co/assets/images/meta-picture.jpg"
+        />
       </Head>
+
       <Languages variants={enterWithY(10)}>
-        <Language
-          color={colors.support.quintiary}
-          onClick={changeLanguage('en')}
-        >
+        <Language color={colors.primary} onClick={changeLanguage('en')}>
           🇺🇸
         </Language>
 
         <Language
-          color={colors.support.quintiary}
+          color={colors.primary}
           left={15}
           onClick={changeLanguage('pt-BR')}
         >
@@ -216,7 +227,7 @@ export default function Landing() {
       <Modal isOpen={modal} close={() => setModal(false)}>
         <Modal.Content>
           <Description
-            color={colors.support.quintiary}
+            color={colors.primary}
             size="eighteen"
             weight="light"
             center={true}
@@ -304,7 +315,7 @@ export default function Landing() {
         </Subtitle>
 
         <Subscribe.Content>
-          <Col sm={12} md={4} lg={4}>
+          <Col xl={12} xs={12} sm={12} md={4} lg={4}>
             <Input
               full={true}
               id="email"
@@ -315,7 +326,7 @@ export default function Landing() {
             />
           </Col>
 
-          <Col sm={12} md={2} lg={2} offset={{ md: 1, lg: 1 }}>
+          <Col xl={12} xs={12} sm={12} md={2} lg={2} offset={{ md: 1, lg: 1 }}>
             <Send full={true} variant="secondary" onClick={save}>
               {t('translation:landing.subscribe.button')}
             </Send>

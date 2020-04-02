@@ -127,7 +127,7 @@ const Content = styled.div`
   })};
 
   &:hover {
-    background-color: ${theme('colors.support.tertiary')};
+    background-color: ${theme('colors.support.quartiary')};
   }
 `
 
