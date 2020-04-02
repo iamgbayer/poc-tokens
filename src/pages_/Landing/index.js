@@ -183,18 +183,19 @@ export default function Landing() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-        <meta property="og:url" content="http://welcome.feedl.co/" />
+        <meta property="og:url" content="https://welcome.feedl.co/" />
         <meta property="og:type" content="product" />
         <meta property="og:site_name" content="Feedl" />
-        <meta property="og:title" content="Ship stuff people need | Feedl" />
-        <meta property="og:description" content="With feedl, your entire feedback workflow is in one place." />
+        <meta property="og:title" content={t('translation:landing.meta.title')} />
+
+        <meta property="og:description" content={t('translation:landing.meta.description')} />
         <meta property="og:image" content="http://welcome.feedl.co/assets/images/meta-picture.jpg" />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="http://Feedl.app/" />
-        <meta name="twitter:title" content="Ship stuff people need | Feedl" />
-        <meta name="twitter:description" content="With feedl, your entire feedback workflow is in one place." />
-        <meta name="twitter:image" content="http://welcome.feedl.co/assets/images/meta-picture.jpg" />
+        <meta name="twitter:site" content="https://feedl.app/" />
+        <meta name="twitter:title" content={t('translation:landing.meta.title')} />
+        <meta name="twitter:description" content={t('translation:landing.meta.description')} />
+        <meta name="twitter:image" content="https://welcome.feedl.co/assets/images/meta-picture.jpg" />
       </Head>
       <Languages variants={enterWithY(10)}>
         <Language
