@@ -5,6 +5,7 @@ import styled, { ThemeContext, css } from 'styled-components'
 import { theme, ifProp } from 'styled-tools'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'next-translate'
+import Link from 'next-translate/Link'
 
 import peoples from '../../assets/images/peoples.svg'
 import extendable from '../../assets/images/extends.svg'
@@ -183,8 +184,6 @@ export default function Landing() {
   const [modal, setModal] = useState(false)
   const { t } = useTranslation()
 
-  const changeLanguage = (language) => () => i18n.changeLanguage(language)
-
   const save = () => {
     setEmail('')
 
@@ -201,30 +200,46 @@ export default function Landing() {
         <meta property="og:url" content="https://welcome.feedl.co/" />
         <meta property="og:type" content="product" />
         <meta property="og:site_name" content="Feedl" />
-        <meta property="og:title" content={t('translation:landing.meta.title')} />
+        <meta
+          property="og:title"
+          content={t('translation:landing.meta.title')}
+        />
 
-        <meta property="og:description" content={t('translation:landing.meta.description')} />
-        <meta property="og:image" content="http://welcome.feedl.co/assets/images/meta-picture.jpg" />
+        <meta
+          property="og:description"
+          content={t('translation:landing.meta.description')}
+        />
+        <meta
+          property="og:image"
+          content="http://welcome.feedl.co/assets/images/meta-picture.jpg"
+        />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="https://feedl.app/" />
-        <meta name="twitter:title" content={t('translation:landing.meta.title')} />
-        <meta name="twitter:description" content={t('translation:landing.meta.description')} />
-        <meta name="twitter:image" content="https://welcome.feedl.co/assets/images/meta-picture.jpg" />
+        <meta name="twitter:site" content="https://welcome.feedl.co/" />
+        <meta
+          name="twitter:title"
+          content={t('translation:landing.meta.title')}
+        />
+        <meta
+          name="twitter:description"
+          content={t('translation:landing.meta.description')}
+        />
+        <meta
+          name="twitter:image"
+          content="https://welcome.feedl.co/assets/images/meta-picture.jpg"
+        />
       </Head>
 
       <Languages variants={enterWithY(10)}>
-        <Language color={colors.primary} onClick={changeLanguage('en')}>
-          🇺🇸
-        </Language>
+        <Link href="/" lang="en" key="en">
+          <Language color={colors.primary}>🇺🇸</Language>
+        </Link>
 
-        <Language
-          color={colors.primary}
-          left={15}
-          onClick={changeLanguage('pt-BR')}
-        >
-          🇧🇷
-        </Language>
+        <Link href="/" lang="pt-BR" key="pt-BR">
+          <Language color={colors.primary} left={15}>
+            🇧🇷
+          </Language>
+        </Link>
       </Languages>
 
       <Modal isOpen={modal} close={() => setModal(false)}>
