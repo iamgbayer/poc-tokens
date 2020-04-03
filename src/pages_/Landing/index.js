@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Head from 'next/head'
-import { Container, Col, Hidden } from 'react-grid-system'
+import { Container, Hidden } from 'react-grid-system'
 import styled, { ThemeContext, css } from 'styled-components'
 import { theme, ifProp } from 'styled-tools'
 import { motion } from 'framer-motion'
@@ -60,7 +60,7 @@ const Header = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  z-index: ${theme('zindex.overlay')};
+  z-index: ${theme('zindex.100')};
 
   ${breakpoints.lessThan('sm')`
     display: flex;
@@ -108,26 +108,6 @@ const Subtitle = styled(Text)`
   `}
 `
 
-const Subscribe = styled(Container)`
-  padding: 80px 0;
-`
-
-Subscribe.Content = styled(Container)`
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-
-  ${breakpoints.lessThan('md')`
-    flex-direction: column;
-  `}
-`
-
-const Send = styled(Button)`
-  ${breakpoints.lessThan('md')`
-    margin-top: 20px;
-  `}
-`
-
 const Content = styled.div`
   position: relative;
 `
@@ -163,13 +143,47 @@ const Language = styled(Text)`
   cursor: pointer;
 `
 
+const Subscribe = styled(Container)`
+  padding: 80px 0;
+`
+
+Subscribe.Content = styled(Container)`
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  ${breakpoints.lessThan('md')`
+    flex-direction: column;
+  `}
+`
+
+const Send = styled(Button)`
+  width: 100%;
+  max-width: 120px;
+  margin-left: 20px;
+
+  ${breakpoints.lessThan('md')`
+    max-width: 100%;
+    margin-top: 20px;
+  `}
+`
+
+const Col = styled.div`
+  width: 100%;
+  max-width: 30%;
+
+  ${breakpoints.lessThan('md')`
+    max-width: 100%;
+  `}
+`
+
 export default function Landing() {
   const { colors } = useContext(ThemeContext)
   const [email, setEmail] = useState('')
   const [modal, setModal] = useState(false)
   const { t } = useTranslation()
 
-  const changeLanguage = language => () => i18n.changeLanguage(language)
+  const changeLanguage = (language) => () => i18n.changeLanguage(language)
 
   const save = () => {
     setEmail('')
@@ -315,7 +329,7 @@ export default function Landing() {
         </Subtitle>
 
         <Subscribe.Content>
-          <Col xl={12} xs={12} sm={12} md={4} lg={4}>
+          <Col>
             <Input
               full={true}
               id="email"
@@ -326,11 +340,9 @@ export default function Landing() {
             />
           </Col>
 
-          <Col xl={12} xs={12} sm={12} md={2} lg={2} offset={{ md: 1, lg: 1 }}>
-            <Send full={true} variant="secondary" onClick={save}>
-              {t('translation:landing.subscribe.button')}
-            </Send>
-          </Col>
+          <Send full={true} variant="secondary" onClick={save}>
+            {t('translation:landing.subscribe.button')}
+          </Send>
         </Subscribe.Content>
       </Subscribe>
 

@@ -20,6 +20,7 @@ export const Tokens = {
   zindex: {
     behind: -1,
     neutral: 0,
+    100: 100,
     overlay: 9999
   },
   border: {
