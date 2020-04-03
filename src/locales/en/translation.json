@@ -1,5 +1,9 @@
 {
   "landing": {
+    "meta": {
+      "title": "Ship stuff people need | Feedl",
+      "description": "With feedl, your entire feedback workflow is in one place."
+    },
     "modal": {
       "title": "Be part of the development cycle of feedl, takes less than 5 minutos and help us a lot.",
       "button": "Participate"
