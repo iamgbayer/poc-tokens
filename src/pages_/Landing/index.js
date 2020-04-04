@@ -132,6 +132,11 @@ Modal.Content = styled.div`
   flex-direction: column;
 `
 
+Modal.Title = styled(Text)`
+  font-size: ${theme('font.size.thirty')};
+  text-align: center;
+`
+
 const Languages = styled(motion.div)`
   display: flex;
   position: absolute;
@@ -180,15 +185,31 @@ const Col = styled.div`
 
 export default function Landing() {
   const { colors } = useContext(ThemeContext)
-  const [email, setEmail] = useState('')
-  const [modal, setModal] = useState(false)
   const { t } = useTranslation()
+  const [email, setEmail] = useState('')
+  const [config, setConfig] = useState({
+    modal: false,
+    status: 'right',
+    size: 11
+  })
 
   const save = () => {
     setEmail('')
 
-    email && saveLeadAddress(email).then(() => setModal(true))
+    if (email) {
+      setConfig({
+        modal: false,
+        status: 'loading',
+        size: 25
+      })
+
+      saveLeadAddress(email).then(() =>
+        setConfig({ modal: true, status: 'right', size: 11 })
+      )
+    }
   }
+
+  const { modal, status, size } = config
 
   return (
     <Content>
@@ -242,8 +263,15 @@ export default function Landing() {
         </Link>
       </Languages>
 
-      <Modal isOpen={modal} close={() => setModal(false)}>
+      <Modal
+        isOpen={modal}
+        close={() => setConfig({ status: 'right', modal: false, size: 11 })}
+      >
         <Modal.Content>
+          <Modal.Title color={colors.primary} weight="bold" bottom={20}>
+            {t('translation:landing.modal.title')}
+          </Modal.Title>
+
           <Description
             color={colors.primary}
             size="eighteen"
@@ -252,7 +280,7 @@ export default function Landing() {
             height={22}
             bottom={30}
           >
-            {t('translation:landing.modal.title')}
+            {t('translation:landing.modal.description')}
           </Description>
 
           <Button
@@ -304,11 +332,11 @@ export default function Landing() {
                   onChange={({ target }) => setEmail(target.value)}
                   value={email}
                   onClickIcon={save}
-                  icon={({ width, height, color }) => (
+                  icon={({ color }) => (
                     <Icon
-                      name="right"
-                      width={width}
-                      height={height}
+                      name={status}
+                      width={size}
+                      height={size}
                       color={color}
                     />
                   )}

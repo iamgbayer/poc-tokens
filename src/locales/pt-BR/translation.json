@@ -1,11 +1,12 @@
 {
   "landing": {
     "meta": {
-      "title": "Ship stuff people need | Feedl",
-      "description": "With feedl, your entire feedback workflow is in one place."
+      "title": "Entregue produtos que as pessoas precisam | Feedl",
+      "description": "Com o feedl, todo o fluxo de trabalho de feedback fica em um só lugar."
     },
     "modal": {
-      "title": "Faça parte do ciclo de desenvolvimento do feedl, leva menos de 5 minutos e nos ajuda muito.",
+      "title": "Pronto! Você está no acesso antecipado",
+      "description": "Faça parte do ciclo de desenvolvimento do feedl, leva menos de 5 minutos e nos ajuda muito.",
       "button": "Participar"
     },
     "header": {
