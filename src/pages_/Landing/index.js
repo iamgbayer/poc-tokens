@@ -10,6 +10,7 @@ import Link from 'next-translate/Link'
 import peoples from '../../assets/images/peoples.svg'
 import extendable from '../../assets/images/extends.svg'
 import firstWave from '../../assets/images/firstWave.svg'
+import logo from '../../assets/images/logo.svg'
 
 import { Text, Input, Icon, Modal, Button } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
@@ -66,7 +67,7 @@ const Header = styled.div`
   ${breakpoints.lessThan('sm')`
     display: flex;
     align-items: center;
-    height: 70vh;
+    height: 100vh;
   `}
 `
 
@@ -183,6 +184,15 @@ const Col = styled.div`
   `}
 `
 
+const Logo = styled(Icon)`
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  width: max-content;
+`
+
+const Nav = styled(Container)``
+
 export default function Landing() {
   const { colors } = useContext(ThemeContext)
   const { t } = useTranslation()
@@ -213,6 +223,10 @@ export default function Landing() {
 
   return (
     <Content>
+      <Nav>
+        <Logo width={200} height={50} name="logo" />
+      </Nav>
+
       <Head>
         <title>{t('translation:landing.meta.title')}</title>
         <meta charSet="utf-8" />
