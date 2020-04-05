@@ -253,12 +253,12 @@ export default function Landing() {
 
       <Languages variants={enterWithY(10)}>
         <Link href="/" lang="en" key="en">
-          <Language color={colors.primary}>🇺🇸</Language>
+          <Language color={colors.primary}>EN</Language>
         </Link>
 
         <Link href="/" lang="pt-BR" key="pt-BR">
           <Language color={colors.primary} left={15}>
-            🇧🇷
+            pt-BR
           </Language>
         </Link>
       </Languages>
