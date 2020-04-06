@@ -189,6 +189,10 @@ const Logo = styled(Icon)`
   top: 40px;
   left: 10px;
   width: max-content;
+
+  ${breakpoints.lessThan('md')`
+    top: 15px;
+  `}
 `
 
 const Nav = styled(Container)``
