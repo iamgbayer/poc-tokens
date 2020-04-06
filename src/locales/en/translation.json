@@ -39,6 +39,9 @@
       "title": "Not signed up yet?",
       "email": "Sign up for early access",
       "button": "Send"
+    },
+    "footer": {
+      "description": "Join us, we want to hear you!"
     }
   }
 }

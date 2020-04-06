@@ -10,13 +10,13 @@ import Link from 'next-translate/Link'
 import peoples from '../../assets/images/peoples.svg'
 import extendable from '../../assets/images/extends.svg'
 import firstWave from '../../assets/images/firstWave.svg'
-import logo from '../../assets/images/logo.svg'
 
 import { Text, Input, Icon, Modal, Button } from '../../components'
 import { breakpoints, enterWithY } from '../../helpers'
 import { saveLeadAddress } from '../../services'
 
 import About from './About'
+import Footer from './Footer'
 
 const Description = styled(Text)`
   max-width: 500px;
@@ -117,7 +117,7 @@ const Content = styled.div`
 const Extends = styled.img`
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 30px;
   z-index: ${theme('zindex.behind')};
   max-width: 60%;
 
@@ -393,6 +393,8 @@ export default function Landing() {
       </Subscribe>
 
       <Extends src={extendable} />
+
+      <Footer />
     </Content>
   )
 }

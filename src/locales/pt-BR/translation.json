@@ -39,6 +39,9 @@
       "title": "Ainda não se inscreveu?",
       "email": "Inscreva-se para acesso antecipado",
       "button": "Enviar"
+    },
+    "footer": {
+      "description": "Participe, queremos te escutar!"
     }
   }
 }
