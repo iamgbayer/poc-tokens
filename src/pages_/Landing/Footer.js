@@ -1,70 +1,85 @@
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { theme } from 'styled-tools'
-import { Container as Containerable, Col } from 'react-grid-system'
-import useTranslation from 'next-translate/useTranslation'
 
-import { Text, Icon } from '../../components'
+import { Text, Icon } from '@/components'
+import media from 'styled-media-query'
 
 const Content = styled.div`
   width: 100%;
-  background-color: ${theme('colors.secondary')};
+  background-color: ${theme('colors.four')};
   padding: 30px 0;
 `
 
 const Socials = styled.div`
+  flex-direction: column;
   display: flex;
+
+  ${media.lessThan('small')`
+    align-items: center;
+  `}
 `
 
-const Container = styled(Containerable)`
+const Container = styled.div`
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${media.lessThan('large')`
+    padding: 0 15px;
+  `}
+
+  ${media.lessThan('small')`
+    flex-direction: column;
+  `}
 `
 
-const Social = styled(Icon)`
+const Social = styled(Text)`
   cursor: pointer;
 `
 
 export default function Footer() {
   const { colors } = useContext(ThemeContext)
-  const { t } = useTranslation()
 
-  const open = (social) => () => {
+  const open = (username) => () => {
     const getBySocial = {
-      twitter: 'https://twitter.com/feedlHQ',
-      linkedin: 'https://www.linkedin.com/company/feedl'
+      viewporty: 'https://twitter.com/viewporty',
+      iamgbayer: 'https://twitter.com/iamgbayer'
     }
 
-    window.open(getBySocial[social])
+    window.open(getBySocial[username])
   }
 
   return (
     <Content>
       <Container>
-        <Col>
-          <Text color={colors.quartiary}>
-            {t('translation:landing.footer.description')}
-          </Text>
-        </Col>
+        <Text color={colors.one}>We want to hear you!</Text>
 
         <Socials>
-          <Social
-            name="twitter"
-            onClick={open('twitter')}
-            color={colors.quartiary}
-            width={30}
-            height={30}
-          />
+          <Text color={colors.one} fontWeight={3} marginTop={[20, 0]}>
+            Contact and follow us
+          </Text>
 
           <Social
-            name="linkedin"
-            onClick={open('linkedin')}
-            left={15}
-            color={colors.quartiary}
-            width={30}
-            height={30}
-          />
+            onClick={open('viewporty')}
+            color={colors.one}
+            marginTop={10}
+            fontWeight={0}
+          >
+            @viewporty
+          </Social>
+
+          <Social
+            onClick={open('iamgbayer')}
+            fontWeight={0}
+            color={colors.one}
+            marginTop={10}
+          >
+            @iamgbayer
+          </Social>
         </Socials>
       </Container>
     </Content>

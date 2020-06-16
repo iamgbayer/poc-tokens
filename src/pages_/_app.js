@@ -1,22 +1,20 @@
-import React from 'react'
-
-import { ThemeProvider } from 'styled-components'
-import { Tokens, Reset } from '../components'
+import React, { useEffect } from 'react'
 import TagManager from 'react-gtm-module'
-import { useEffect } from 'react'
+import { ThemeProvider } from 'styled-components'
+
+import { Theme, Reset } from '@/components'
 
 const tagManagerArgs = {
-  gtmId: 'GTM-5HZHS57'
+  gtmId: ''
 }
-
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
-    TagManager.initialize(tagManagerArgs);
+    TagManager.initialize(tagManagerArgs)
   }, [])
 
   return (
-    <ThemeProvider theme={Tokens}>
+    <ThemeProvider theme={Theme.light}>
       <Reset />
       <Component {...pageProps} />
     </ThemeProvider>

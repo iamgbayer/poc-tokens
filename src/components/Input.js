@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import styled, { css, ThemeContext } from 'styled-components'
 import { ifProp, switchProp, theme } from 'styled-tools'
-
-import { Box } from './Box'
+import { space } from 'styled-system'
 
 const iconAlign = {
   left: 'left',
@@ -16,7 +15,9 @@ const typing = {
   email: 'email'
 }
 
-const Container = styled(Box)`
+const Container = styled.div`
+  ${space}
+
   width: ${ifProp({ full: true }, '100%', 'max-content')};
   display: flex;
   flex-direction: column;
@@ -28,8 +29,8 @@ const Inputable = styled.input`
   -moz-appearance: none;
   appearance: none;
   font-weight: ${theme('font.weight.regular')};
-  font-family: ${theme('font.family.primary')};
-  font-size: ${theme('font.size.fifteen')};
+  font-family: ${theme('font.family.one')};
+  font-size: ${theme('fontSizes.15')};
   cursor: ${ifProp('disabled', 'not-allowed', 'initial')};
 
   height: ${switchProp('size', {
@@ -39,14 +40,9 @@ const Inputable = styled.input`
 
   color: ${ifProp(
     'hasError',
-    theme('colors.support.sixtiary'),
-    theme('colors.support.quintiary')
+    theme('colors.fourteen'),
+    theme('colors.eleven')
   )};
-
-  background-color: ${switchProp('variant', {
-    primary: theme('colors.quartiary'),
-    secondary: theme('colors.secondary')
-  })};
 
   ${ifProp(
     { disabled: true },
@@ -59,11 +55,7 @@ const Inputable = styled.input`
   border-radius: ${theme('border.radius.five')};
 
   border: 1px solid
-    ${ifProp(
-      'hasError',
-      theme('colors.support.sixtiary'),
-      theme('colors.support.secondary')
-    )};
+    ${ifProp('hasError', theme('colors.fourteen'), theme('colors.twelve'))};
 
   ${ifProp(
     'icon',
@@ -78,27 +70,31 @@ const Inputable = styled.input`
     null
   )}
 
+  &:focus {
+    outline: none;
+  }
+
   &::placeholder {
     font-weight: ${theme('font.weight.regular')};
     color: ${ifProp(
       'hasError',
-      theme('colors.support.sixtiary'),
-      theme('colors.support.quintiary')
+      theme('colors.fourteen'),
+      theme('colors.eleven')
     )};
   }
 `
 
 const Message = styled.span`
   margin-top: 5px;
-  font-family: ${theme('font.family.primary')};
-  font-size: ${theme('font.size.fourteen')};
-  color: ${theme('colors.support.sixtiary')};
+  font-family: ${theme('font.family.one')};
+  font-size: ${theme('fontSizes.14')};
+  color: ${theme('colors.fourteen')};
 `
 
 const Label = styled.label`
-  font-family: ${theme('font.family.primary')};
-  font-size: ${theme('font.size.fourteen')};
-  color: ${theme('colors.support.quintiary')};
+  font-family: ${theme('font.family.one')};
+  font-size: ${theme('fontSizes.14')};
+  color: ${theme('colors.eleven')};
   margin-bottom: 5px;
 `
 
@@ -107,7 +103,7 @@ const Content = styled.div`
   align-items: center;
   width: 28px;
   height: 28px;
-  background-color: ${theme('colors.primary')};
+  background-color: ${theme('colors.three')};
   border-radius: ${theme('border.radius.five')};
   display: flex;
   justify-content: center;
@@ -127,7 +123,7 @@ const Content = styled.div`
   })};
 
   &:hover {
-    background-color: ${theme('colors.support.quartiary')};
+    background-color: ${theme('colors.eight')};
   }
 `
 
@@ -159,12 +155,13 @@ export function Input({
           {icon({
             width: 11,
             height: 11,
-            color: colors.quartiary
+            color: colors.one
           })}
         </Content>
       )}
 
       <Inputable
+        {...props}
         id={id}
         type={typing}
         value={value}
@@ -176,7 +173,6 @@ export function Input({
         placeholder={placeholder}
         required={required}
         disabled={disabled}
-        {...props}
       />
 
       {error.has && <Message>{error.message}</Message>}

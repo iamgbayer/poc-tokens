@@ -1,0 +1,29 @@
+import { merge } from 'ramda'
+
+import { Tokens } from './Tokens'
+
+const withTokens = (theme) => merge(theme, Tokens)
+
+export const Theme = {
+  light: withTokens({
+    theme: 'light',
+    colors: {
+      one: '#fafafa',
+      two: '#F3F5F9',
+      three: '#344356',
+      four: '#3D56F0',
+      seven: 'rgba(68, 71, 90, 0.6)',
+      eight: '#607B9E',
+      nine: '#5468FF',
+      ten: '#E1EBFC',
+      eleven: '#aaa',
+      twelve: '#efefef',
+      thirteen: '#fff',
+      fourteen: '#ff4747'
+    },
+    shadow: {
+      one: '0px 12px 19px rgba(0, 0, 0, 0.0851449)',
+      two: '0px 10px 39px rgba(0,0,0,0.6)'
+    }
+  })
+}

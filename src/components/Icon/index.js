@@ -1,18 +1,20 @@
 import React, { memo, useContext } from 'react'
 import styled, { ThemeContext, css } from 'styled-components'
 import { ifProp } from 'styled-tools'
-
-import { Box } from '../Box'
+import { space } from 'styled-system'
 
 import * as Icons from './Icons'
 
-const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1)
+const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1)
 
-const Container = styled(Box)`
+const Container = styled.div`
+  ${space}
+
   display: flex;
   justify-content: center;
   align-items: center;
   line-height: 0;
+
   ${ifProp(
     'onClick',
     css`
@@ -33,7 +35,7 @@ export const Icon = memo(
           {...props}
           width={width}
           height={height}
-          color={color || colors.primary}
+          color={color || colors.one}
         />
       </Container>
     )

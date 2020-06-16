@@ -46,7 +46,7 @@ export const Reset = createGlobalStyle`
   }
 
   body {
-    background-color: ${theme('colors.sixtiary')};
+    background-color: ${theme('colors.one')};
   }
 
   h1,
@@ -62,6 +62,6 @@ export const Reset = createGlobalStyle`
   li {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: ${theme('font.family.primary')};
+    font-family: ${theme('font.family.one')};
   }
 `

@@ -1,20 +1,24 @@
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { ifProp, switchProp, theme } from 'styled-tools'
+import { space, color } from 'styled-system'
 
 import { Text as Texteable } from './Text'
-import { Box } from './Box'
 
-const Container = styled(Box)`
+const Container = styled.button`
+  ${space}
+  ${color}
+
   width: ${ifProp({ full: true }, '100%', 'max-content')};
   height: ${switchProp('size', {
     default: '40px',
     large: '48px'
   })};
   cursor: pointer;
+  border: none;
   background-color: ${switchProp('variant', {
-    primary: theme('colors.primary'),
-    secondary: theme('colors.secondary')
+    primary: theme('colors.three'),
+    secondary: theme('colors.four')
   })};
 
   padding: ${switchProp('size', {
@@ -31,8 +35,8 @@ const Container = styled(Box)`
 
   &:hover {
     background-color: ${switchProp('variant', {
-      secondary: theme('colors.support.tertiary'),
-      primary: theme('colors.support.quartiary')
+      primary: theme('colors.eight'),
+      secondary: theme('colors.nine')
     })};
   }
 `
@@ -60,20 +64,19 @@ export const Button = ({
   href,
   ...props
 }) => {
-  const { colors } = useContext(ThemeContext)
-
-  const on = () => (href ? window.open(href, '_blank') : onClick && onClick())
+  const onClickWithHref = () =>
+    href ? window.open(href, '_blank') : onClick && onClick()
 
   return (
     <Container
-      onClick={on}
+      {...props}
+      onClick={onClickWithHref}
       size={size}
       icon={icon}
       full={full}
       variant={variant}
-      {...props}
     >
-      <Text color={colors.support.primary} size="eleven" weight="bold">
+      <Text color="one" fontSize={[14, 18, 23]} fontWeight="bold">
         {children}
 
         {icon && (
@@ -81,7 +84,7 @@ export const Button = ({
             {icon({
               width: 12,
               height: 12,
-              color: colors.support.primary
+              color: 'one'
             })}
           </Icon>
         )}
