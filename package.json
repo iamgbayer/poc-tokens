@@ -10,7 +10,7 @@
     "easy-peasy": "^3.3.0",
     "formik": "^2.1.4",
     "framer-motion": "^1.10.0",
-    "next": "^9.3.2",
+    "next": "^11.1.0",
     "next-compose-plugins": "^2.2.0",
     "next-fonts": "^1.0.3",
     "react-scroll": "^1.7.16",
